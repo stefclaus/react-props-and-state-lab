@@ -14,7 +14,7 @@ class App extends React.Component {
       }
     }
   }
-  
+
     onChangeType = (filterType) => {
       this.setState({
         filters: {
@@ -25,31 +25,31 @@ class App extends React.Component {
     }
 
 
-  apiReturn = (filterType) => {
-    var apiReturn;
-   if (this.state.filter.type==='all') {
-      apiReturn = '/api/pets'
-    } else if (this.state.filter.type==='dog') {
-      apiReturn = '/api/pets?type=cat'
-    } else if (this.state.filter.type==='cat') {
-      apiReturn = '/api/pets?type=cat'
-    } else {
-      apiReturn = '/api/pets?type=micropig'
-    }
-  }
 
     onFindPetsClick = () => {
-      debugger;
-      fetch(apiReturn)
-        .then(function(response) {
-          return response.json();
-      })
-      .then(function(json) {
-        console.log(json)
-    });
-
+      let apiReturn;
+     if (this.state.filters.type==='all') {
+        apiReturn = '/api/pets'
+      } else if (this.state.filters.type==='dog') {
+        apiReturn = '/api/pets?type=cat'
+      } else if (this.state.filters.type==='cat') {
+        apiReturn = '/api/pets?type=cat'
+      } else {
+        apiReturn = '/api/pets?type=micropig'
+      }
+    fetch(apiReturn)
+        .then(response => response.json())
+      .then(petReturn => this.setState({ pets: petReturn }));
     }
 
+
+
+
+  //})
+
+    onAdoptPet = (petId) => {
+      this.state.pets.find(petId)
+    }
 
   render() {
     return (
@@ -63,7 +63,7 @@ class App extends React.Component {
               <Filters onChangeType={this.onChangeType} onFindPetsClick={this.onFindPetsClick}/>
             </div>
             <div className="twelve wide column">
-              <PetBrowser />
+              <PetBrowser pets={this.state.pets} onAdoptPet={this.onAdoptPet}/>
             </div>
           </div>
         </div>
