@@ -2,9 +2,9 @@ import React from 'react'
 
 class Filters extends React.Component {
 
-  handleFilterChange = event => {
-       this.props.onChangeType(event);
-   };
+  //handleFilterChange = event => {
+  //     this.props.onChangeType(event);
+  // };
 
   render() {
     return (
@@ -23,7 +23,11 @@ class Filters extends React.Component {
         </div>
 
         <div className="field">
-          <button className="ui secondary button" onClick={this.props.onFindPetsClick}>Find pets</button>
+          <button
+            className="ui secondary button"
+            onClick={this.props.onFindPetsClick}>
+            Find pets
+          </button>
         </div>
       </div>
     )
