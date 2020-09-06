@@ -14,7 +14,7 @@ class Filters extends React.Component {
           <select
               name="type"
               id="type"
-              onClick = {this.props.onChangeType}>
+              onChange = {this.props.onChangeType}>
             <option value="all">All</option>
             <option value="cat">Cats</option>
             <option value="dog">Dogs</option>

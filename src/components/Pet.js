@@ -12,17 +12,16 @@ class Pet extends React.Component {
    	 };
     //
       generateAdoptButton = () => {
-      		if (this.props.pet.isAdopted === false) {
-      			return <button
-              className="ui primary button"
-              onClick = {this.props.onAdoptPet}>
+      		if (this.props.pet.isAdopted === true) {
+            return <button className="ui disabled button">
+              Already adopted
+            </button>;
+      		} else {
+      		return  <button
+              onClick={() => this.props.onAdoptPet(this.props.pet.id)}
+              className="ui primary button">
               Adopt pet
             </button>
-      		} else if (this.props.pet.isAdopted === true); {
-      		return <button c
-            lassName="ui disabled button">
-            Already adopted
-          </button>;
       	}};
 
   render() {

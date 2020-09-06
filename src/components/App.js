@@ -32,29 +32,21 @@ class App extends React.Component {
 }
 
 
-  // onChangeType = ({ target: { value } }) => {
-//     this.setState({
-//  filters: {
-// ...this.state.filters, type: value } });
-//   };
 
-       onChangeType = ({ target: { filterType } }) => {
+       onChangeType = ({ target: { value } }) => {
          this.setState({
            filters: {
              ...this.state.filters,
-             type: filterType } });
+             type: value } });
        };
 
-       onAdoptPet = (petId) => {
-         this.state.pets.find(petId)
-       }
 
-  // onAdoptPet = petId => {
-  //   const pets = this.state.pets.map(p => {
-  //     return p.id === petId ? { ...p, isAdopted: true } : p;
-  //   });
-  //   this.setState({ pets: pets });
-  // };
+   onAdoptPet = petId => {
+     const pets = this.state.pets.map(p => {
+       return p.id === petId ? { ...p, isAdopted: true } : p;
+     });
+     this.setState({ pets: pets });
+   };
 
   render() {
     return (
